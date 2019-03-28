@@ -1,0 +1,43 @@
+Source: http://teropa.info/blog/2015/09/10/full-stack-redux-tutorial.html
+
+1. Creat directory
+		mkdir voting-server
+		cd voting-server
+		npm init -y
+
+2.   We'll need to add Babel to the project, so that we can use all the ES6 features we want and transpile the code to ES5:
+			npm install --save-dev babel-core babel-cli babel-preset-es2015
+
+3.  Since we'll be writing a bunch of unit tests, we'll also need some libraries to write them with:
+		npm install --save-dev mocha chai
+
+4. This command tells Mocha to recursively find all tests from the project and run them. It uses Babel to transpile ES6 code before running it.
+		./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive
+
+It'll be easier in the long run to store this command in our package.json:
+		"scripts": {
+					  "test": "mocha --compilers js:babel-core/register --recursive"
+					},
+
+
+5. Another thing we need to do is enable Babel's ES6/ES2015 language support. inside package.json
+			"babel": {
+					  "presets": ["es2015"]
+					}
+Now we can just run the tests with the npm command:
+			npm run test
+
+6. Another command called test:watch will be useful for launching a process that watches for changes in our code and runs the tests after each change: Inside package.json
+
+				"scripts": {
+				  "test": "mocha --compilers js:babel-core/register --recursive",
+				  "test:watch": "npm run test -- --watch"
+				},
+
+7.Install Immutable and Chai Immutable
+				npm install --save immutable
+				npm install --save-dev chai-immutable
+
+
+
+CONTINUE from source.
